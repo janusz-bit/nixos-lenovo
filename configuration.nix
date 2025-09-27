@@ -233,6 +233,8 @@
     kdePackages.kleopatra
 
     lenovo-legion
+
+    mangohud
   ];
 
   services.flatpak.enable = true;
@@ -302,13 +304,22 @@
 
   hardware.wooting.enable = true;
 
-  # hardware.graphics.enable32Bit = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
   # Kernel ChacheOS
   boot.kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride { mArch = "GENERIC_V4"; };
   # services.scx.enable = true;
 
   programs.adb.enable = true;
+
+  swapDevices = [
+  {
+    device = "/var/swapfile";
+    size = 34 * 1024;
+  }];
 
 
   # Open ports in the firewall.

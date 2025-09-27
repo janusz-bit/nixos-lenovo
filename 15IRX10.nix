@@ -1,11 +1,14 @@
-{   config,
+{
+  config,
   pkgs,
   lib,
-  inputs,...}:
+  inputs,
+  ...
+}:
 
 {
 
-imports = [
+  imports = [
     "${inputs.nixos-hardware}/common/cpu/intel/raptor-lake"
     "${inputs.nixos-hardware}/common/gpu/nvidia/prime.nix"
     "${inputs.nixos-hardware}/common/gpu/nvidia/ada-lovelace"
@@ -13,18 +16,30 @@ imports = [
     "${inputs.nixos-hardware}/common/pc/ssd"
   ];
 
-
-  hardware = {
-    nvidia = {
-      modesetting.enable = lib.mkDefault true;
-      powerManagement.enable = lib.mkDefault true;
-
-      prime = {
-        intelBusId = "PCI:0:2:0";
-        nvidiaBusId = "PCI:1:0:0";
+  hardware.nvidia = {
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
       };
+
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+
     };
   };
 
-  services.thermald.enable = lib.mkDefault true;
+  specialisation = {
+    gaming-time.configuration = {
+
+      hardware.nvidia = {
+        prime.sync.enable = lib.mkForce true;
+        prime.offload = {
+          enable = lib.mkForce false;
+          enableOffloadCmd = lib.mkForce false;
+        };
+      };
+
+    };
+  };
 }
