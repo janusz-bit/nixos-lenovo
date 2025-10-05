@@ -236,6 +236,8 @@
     lenovo-legion
 
     mangohud
+
+    cachix
   ];
 
   services.colord.enable = true;
