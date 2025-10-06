@@ -22,6 +22,19 @@
     ./15IRX10.nix
   ];
 
+  nix = {
+    settings = {
+      extra-substituters = [
+        "https://chaotic-nyx.cachix.org/"
+        "https://janusz-bit.cachix.org/"
+      ];
+      extra-trusted-public-keys = [
+        "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
+        "janusz-bit.cachix.org-1:4stTiufAF02BAXw8HNvYslAmUlPbZPIRhIGht0gSMoo="
+      ];
+    };
+  };
+
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
