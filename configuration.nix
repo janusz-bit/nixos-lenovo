@@ -10,12 +10,6 @@
   ...
 }:
 {
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
@@ -32,8 +26,14 @@
         "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
         "janusz-bit.cachix.org-1:4stTiufAF02BAXw8HNvYslAmUlPbZPIRhIGht0gSMoo="
       ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
     };
   };
+
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ]; # For nixd
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
