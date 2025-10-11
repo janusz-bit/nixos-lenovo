@@ -251,6 +251,10 @@
     mangohud
 
     cachix
+
+    bitwarden-desktop
+
+    ungoogled-chromium
   ];
 
   services.colord.enable = true;
