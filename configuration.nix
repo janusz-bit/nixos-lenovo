@@ -294,6 +294,10 @@
       enableBrowserSocket = true;
       enableExtraSocket = true;
     };
+    bash.shellAliases = {
+      janusz-bit-rebuild-boot = "sudo nix build /etc/nixos#nixosConfigurations.nixos.config.system.build.toplevel --no-link --print-out-paths | cachix push janusz-bit && sudo nixos-rebuild boot";
+      janusz-bit-rebuild-switch = "sudo nix build /etc/nixos#nixosConfigurations.nixos.config.system.build.toplevel --no-link --print-out-paths | cachix push janusz-bit && sudo nixos-rebuild switch";
+    };
   };
 
   environment.sessionVariables = {
