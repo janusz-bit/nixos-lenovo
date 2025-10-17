@@ -16,6 +16,11 @@
     "${inputs.nixos-hardware}/common/pc/ssd"
   ];
 
+
+  boot.extraModulePackages = [ config.boot.kernelPackages.lenovo-legion-module ];
+
+  services.thermald.enable = lib.mkDefault true;
+
   hardware = {
     graphics = {
       enable = true;
