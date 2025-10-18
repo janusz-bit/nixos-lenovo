@@ -255,6 +255,10 @@
     bitwarden-desktop
 
     ungoogled-chromium
+
+    (python3.withPackages(ps: with ps; [
+      pip
+    ]))
   ];
 
   services.colord.enable = true;
