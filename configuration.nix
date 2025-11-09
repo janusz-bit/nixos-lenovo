@@ -152,7 +152,7 @@
     handbrake
     obsidian
     pandoc
-    kdePackages.wallpaper-engine-plugin
+    # kdePackages.wallpaper-engine-plugin
     betterdiscordctl
     libreoffice-qt
     hunspell
@@ -256,10 +256,16 @@
 
     ungoogled-chromium
 
-    (python3.withPackages(ps: with ps; [
-      pip
-    ]))
+    # (python3.withPackages(ps: with ps; [
+    #   pip
+    # ]))
+
+    uv
+
+    # inputs.marker-nix.packages.${system}.default
   ];
+
+  environment.localBinInPath = true; # https://wiki.nixos.org/wiki/Python -> Setting environment.localBinInPath = true; is highly recommended, because uv will install binaries in ~/.local/bin.
 
   services.colord.enable = true;
 

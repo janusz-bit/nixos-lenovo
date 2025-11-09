@@ -10,7 +10,6 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-flake.url = "github:GuillaumeDesforges/fix-python";
   };
 
   outputs =
