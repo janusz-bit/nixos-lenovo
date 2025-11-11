@@ -263,6 +263,8 @@
     uv
 
     # inputs.marker-nix.packages.${system}.default
+
+    logseq
   ];
 
   environment.localBinInPath = true; # https://wiki.nixos.org/wiki/Python -> Setting environment.localBinInPath = true; is highly recommended, because uv will install binaries in ~/.local/bin.
