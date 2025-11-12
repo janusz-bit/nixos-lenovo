@@ -267,6 +267,11 @@
     logseq
   ];
 
+  services.mullvad-vpn = {
+    enable = true;
+    package = pkgs.mullvad-vpn;
+  };
+
   environment.localBinInPath = true; # https://wiki.nixos.org/wiki/Python -> Setting environment.localBinInPath = true; is highly recommended, because uv will install binaries in ~/.local/bin.
 
   services.colord.enable = true;
