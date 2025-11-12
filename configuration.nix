@@ -265,6 +265,8 @@
     # inputs.marker-nix.packages.${system}.default
 
     logseq
+
+    kdePackages.kamoso
   ];
 
   services.mullvad-vpn = {
