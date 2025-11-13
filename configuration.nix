@@ -267,6 +267,8 @@
     logseq
 
     kdePackages.kamoso
+
+    mullvad-browser
   ];
 
   services.mullvad-vpn = {
