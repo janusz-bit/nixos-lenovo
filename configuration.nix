@@ -269,6 +269,8 @@
     kdePackages.kamoso
 
     mullvad-browser
+
+    bootdev-cli
   ];
 
   services.mullvad-vpn = {
