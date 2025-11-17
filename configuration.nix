@@ -294,7 +294,7 @@
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
       localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
       gamescopeSession.enable = false;
-      extraCompatPackages = [ pkgs.proton-cachyos_x86_64_v4 ];
+      extraCompatPackages = [ pkgs.proton-cachyos_x86_64_v3 ];
     };
     obs-studio = {
       enable = true;
