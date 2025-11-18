@@ -271,6 +271,8 @@
     mullvad-browser
 
     bootdev-cli
+
+    dmidecode
   ];
 
   services.mullvad-vpn = {
