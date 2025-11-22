@@ -363,7 +363,7 @@
   };
 
   # Kernel ChacheOS
-  boot.kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride { mArch = "GENERIC_V3"; }; # https://wiki.cachyos.org/features/optimized_repos/
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto.cachyOverride { mArch = "GENERIC_V3"; }; # https://wiki.cachyos.org/features/optimized_repos/
 # Intel 12th gen (Alder Lake) and newer CPUs may report x86-64-v4 support, but in practice they cannot run AVX-512 instructions.
   # services.scx.enable = true;
 
