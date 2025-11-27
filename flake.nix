@@ -33,7 +33,7 @@
       kernelOptions = {
         mArch = "GENERIC_V3";
         ticksHz = 1000;
-        withoutDebug = true;
+        withoutDebug = false;
         useLTO = "full";
         preempt = "full";
         hugePages = "always";
