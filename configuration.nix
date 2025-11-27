@@ -7,6 +7,7 @@
   pkgs,
   lib,
   inputs,
+  kernelOptions,
   ...
 }:
 {
@@ -75,6 +76,10 @@
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   # services.xserver.enable = true;
+  # services.xserver.videoDrivers = [
+  #   "modesetting"
+  #   "nvidia"
+  # ];
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
@@ -256,9 +261,9 @@
 
     ungoogled-chromium
 
-    # (python3.withPackages(ps: with ps; [
-    #   pip
-    # ]))
+    (python3.withPackages(ps: with ps; [
+      pip
+    ]))
 
     uv
 
@@ -297,8 +302,8 @@
       remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
       dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
       localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-      gamescopeSession.enable = false;
-      extraCompatPackages = [ pkgs.proton-cachyos_x86_64_v3 ];
+      gamescopeSession.enable = true;
+      extraCompatPackages = [ pkgs.proton-cachyos_nightly_x86_64_v3 ];
     };
     obs-studio = {
       enable = true;
@@ -326,11 +331,9 @@
     };
   };
 
-  environment.sessionVariables = {
-    STEAM_EXTRA_COMPAT_TOOLS_PATHS = "~/.local/share/Steam/compatibilitytools.d";
-  };
+  
 
-  programs.gamescope.enable = true;
+  # programs.gamescope.enable = true;
 
   # hardware.nvidia.modesetting.enable = true;
 
@@ -363,10 +366,9 @@
   };
 
   # Kernel ChacheOS
-  boot.kernelPackages = pkgs.linuxPackages_cachyos.cachyOverride { mArch = "GENERIC_V3"; }; # https://wiki.cachyos.org/features/optimized_repos/
+  boot.kernelPackages = pkgs.linuxPackages_cachyos-lto.cachyOverride kernelOptions; # https://wiki.cachyos.org/features/optimized_repos/
   # Intel 12th gen (Alder Lake) and newer CPUs may report x86-64-v4 support, but in practice they cannot run AVX-512 instructions.
   services.scx.enable = true; # Domyślnie używa scx_rustland
-  services.scx.scheduler = "scx_rusty"; # Opcjonalnie, dla lepszej responsywności
 
   programs.adb.enable = true;
 
